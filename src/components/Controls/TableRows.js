@@ -12,6 +12,8 @@ function TableRows({rowsData, deleteTableRows, handleChange}) {
                 <td><button className="btn btn-outline-danger" onClick={()=>(deleteTableRows(index))}>x</button></td>
             </tr>
 
+
+
             )
         })
    
