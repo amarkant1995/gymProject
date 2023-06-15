@@ -10,6 +10,7 @@ export default class B extends Component {
       <div>
         I am B
       </div>
+      
     )
   }
 }

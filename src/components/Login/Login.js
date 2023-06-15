@@ -3,10 +3,12 @@ import ".//Login.css";
 import AuthService from "./auth.service";
 import { withRouter } from "react-router-dom";
 import { Navigate } from "react-router-dom";
+
 export default class Login extends Component {
   constructor(props) {
     super(props);
-    console.log("props", props);
+    // console.log("props", props);
+
     this.state = {
       form: {
         UserName: "",
@@ -22,11 +24,11 @@ export default class Login extends Component {
     };
   }
   loginClick = (e) => {
-    debugger;
     e.preventDefault();
     const { form, formErrors } = this.state;
     const errorObj = this.validateForm(form, formErrors, this.validateField);
-    console.log(errorObj, "value ", form);
+    // console.log(errorObj, "value ", form);
+
     if (Object.keys(errorObj).length !== 0) {
       this.setState({ formErrors: { ...formErrors, ...errorObj } });
       return false;
@@ -38,7 +40,8 @@ export default class Login extends Component {
       AuthService.loginCheck(data)
         .then((res) => {
           this.setState({ userLogged: true });
-          console.log("com", res);
+          // console.log("com", res);
+
           // if(res.Token!=null){
 
           // }
@@ -63,6 +66,16 @@ export default class Login extends Component {
         });
     }
   };
+
+  // getApi=()=>{
+  //   fetch("https://localhost:44303/api/Authenticate")
+  //     .then(response => {
+  //       return response.json()
+  //     })
+  //     .then(data => {
+  //       console.log(data)
+  //     })
+  // }
 
   validateField = (name, value, refValue) => {
     let errorMsg = null;
@@ -156,13 +169,11 @@ export default class Login extends Component {
       this.setState({ formErrors: formErrorsObj });
     });
   };
-  render() {
+  render() 
+  {
     if (this.state.userLogged) {
-      return <Navigate to="/A" />;
+      return <Navigate to="/add-scheme" />;
     }
-
-    console.log(this.state.userLogged);
-    console.log(this.state.formErrors);
     const { form, formErrors } = this.state;
     return (
       <React.Fragment>
@@ -200,7 +211,7 @@ export default class Login extends Component {
                             />
                             <label
                               className="form-label"
-                              htmlFor="form2Example11"
+                              for="form2Example11"
                             >
                               Username
                             </label>
@@ -218,7 +229,7 @@ export default class Login extends Component {
                             />
                             <label
                               className="form-label"
-                              htmlFor="form2Example22"
+                              for="form2Example22"
                             >
                               Password
                             </label>
@@ -233,6 +244,8 @@ export default class Login extends Component {
                             >
                               Log in
                             </button>
+                            {/* <button onClick={()=>this.getApi()}>get Api</button>
+                             */}
                             {/* <a className="text-muted" href="#!">Forgot password?</a>
                              */}
                           </div>
