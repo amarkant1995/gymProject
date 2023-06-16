@@ -1,4 +1,7 @@
 function TableRows({rowsData, deleteTableRows, handleChange}) {
+    {
+        console.log("In master Branch")
+    }
     return(
         rowsData.map((data, index)=>{
             const {fullName, emailAddress, salary}= data;
